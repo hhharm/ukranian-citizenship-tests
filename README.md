@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ukrainian History & Constitution Quiz App
 
-## Getting Started
+A client-side quiz application to help people prepare for tests on Ukrainian history and the Ukrainian Constitution. Questions are in Ukrainian (Cyrillic). The app presents multiple-choice questions (4 options: а/б/в/г), tracks answers, and shows results.
 
-First, run the development server:
+## Commands
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+    npm run dev # Start development server (http://localhost:3000)
+    npm run build # Production build
+    npm run start # Start production server
+    npm run lint # Run ESLint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+No test framework is configured in this project.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This is a Next.js 16 App Router project bootstrapped with create-next-app. The entire quiz logic runs client-side (no backend needed).
 
-## Learn More
+### Key files
 
-To learn more about Next.js, take a look at the following resources:
+App shell:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    app/layout.tsx — Root layout with Geist font setup and global metadata
+    app/page.tsx — Home page, renders <QuizApp />
+    app/globals.css — Global styles with Tailwind imports and CSS custom properties for light/dark theming
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Data layer (data/):
 
-## Deploy on Vercel
+    data/types.ts — Shared TypeScript types: Question, QuestionOption, OptionId, Topic, QuizState, QuizResult
+    data/history.md — Raw question source for Ukrainian history (Ukrainian language, multiple-choice)
+    data/constitution.md — Raw question source for Ukrainian Constitution (Ukrainian language, multiple-choice)
+    data/historyQuestions.ts — Parsed history questions as Question[] (needs to be populated)
+    data/constitutionQuestions.ts — Parsed constitution questions as Question[] (needs to be populated)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Components (components/):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    components/QuizApp.tsx — Root quiz component, owns state and routing between screens
+    components/QuizHome.tsx — Topic selection screen (history vs. constitution)
+    components/QuizQuestion.tsx — Single question display with answer options
+    components/QuizResults.tsx — End-of-quiz results summary
+
+## Stack
+
+Next.js 16, React 19, TypeScript 5, Tailwind CSS v4, ESLint 9
+
+Routing: App Router (not Pages Router). New routes go in app/ as page.tsx files.
+
+Styling: Tailwind CSS v4 via PostCSS. Dark mode via CSS custom properties and prefers-color-scheme in globals.css.
+
+TypeScript: Strict mode. Path alias @/\* maps to project root.
