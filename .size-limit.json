@@ -1,0 +1,7 @@
+[
+  {
+    "name": "Largest chunk",
+    "path": ".next/static/chunks/*.js",
+    "limit": "300 KB"
+  }
+]

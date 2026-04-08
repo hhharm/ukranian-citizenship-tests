@@ -1,0 +1,21 @@
+{
+  "$schema": "https://knip.dev/config/schema.json",
+  "project": [
+    "app/**/*.{ts,tsx}",
+    "components/**/*.{ts,tsx}",
+    "lib/**/*.{ts,tsx}",
+    "data/**/*.{ts,tsx}",
+    "eslint.config.mjs",
+    "postcss.config.mjs",
+    "tsconfig.json"
+  ],
+  "ignoreDependencies": [
+    "@tailwindcss/postcss",
+    "@types/node",
+    "@types/react",
+    "@types/react-dom",
+    "tailwindcss",
+    "postcss",
+    "typescript"
+  ]
+}

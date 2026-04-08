@@ -1,0 +1,18 @@
+{
+  "ignorePatterns": [
+    "dist",
+    ".next",
+    "node_modules",
+    "coverage"
+  ],
+  "ignores": [
+    "@tailwindcss/postcss",
+    "@types/node",
+    "@types/react",
+    "@types/react-dom",
+    "tailwindcss",
+    "@size-limit/preset-app"
+  ],
+  "skipMissing": false,
+  "ignoreMatches": []
+}
