@@ -12,6 +12,11 @@ export interface Question {
   answer: OptionId;
   explanation?: string;
   humanChecked?: boolean;
+  /**
+   * Internal flag: set to true once the answer has been re-verified against
+   * Ukrainian-language sources by the reverification job. Not surfaced in the UI.
+   */
+  isReverified?: boolean;
 }
 
 export type Topic = "history" | "constitution";

@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# re-verification job scratch file
+reverify-batch.json
+
 .claude
 .vscode
 .mcp.json
