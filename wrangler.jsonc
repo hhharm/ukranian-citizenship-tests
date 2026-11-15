@@ -1,0 +1,15 @@
+// Cloudflare Workers static-assets deployment: no server code, just serve the
+// static export in out/ (next.config.ts has output: 'export').
+// Without this file `wrangler deploy` auto-configures OpenNext, which fails.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ua-citizenship-test",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./out",
+    // Serve out/404.html with a 404 status for unknown paths.
+    "not_found_handling": "404-page",
+    // /history → out/history.html
+    "html_handling": "auto-trailing-slash"
+  }
+}
