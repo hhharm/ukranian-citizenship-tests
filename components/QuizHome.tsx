@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { IconBooks, IconDice5, IconRotateClockwise, IconX, IconHistory, IconScale } from "@tabler/icons-react";
+import { IconBooks, IconDice5, IconRotateClockwise, IconX, IconHistory, IconScale, IconCar, IconExternalLink } from "@tabler/icons-react";
 import { Topic } from "@/data/types";
 
 type QuizMode = "random" | "new" | "failed" | "rewind";
@@ -136,6 +136,55 @@ function TopicCard({
   );
 }
 
+function DrivingLicenceInfo() {
+  return (
+    <aside className="relative overflow-hidden rounded-2xl p-6 shadow-sm border border-gray-100 bg-white w-full max-w-2xl">
+      <div className="absolute inset-y-0 left-0 w-1.5 flex flex-col rounded-l-2xl">
+        <div className="flex-1 bg-[#0057B7]" />
+        <div className="flex-1 bg-[#FFD700]" />
+      </div>
+      <div className="pl-3 flex flex-col sm:flex-row gap-4">
+        <IconCar size={40} className="text-gray-900 shrink-0" />
+        <div>
+          <h2 className="font-bold text-lg text-gray-900">
+            Отримали посвідку на постійне проживання? Не забудьте про права
+          </h2>
+          <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+            Іноземне посвідчення водія діє в Україні лише 60 днів з дати
+            видачі посвідки на постійне проживання, після чого його треба
+            обміняти на українське. Зазвичай для цього потрібно пройти
+            медогляд і скласти теоретичний та практичний іспити в сервісному
+            центрі МВС.{" "}
+            <a
+              href="https://hsc.gov.ua/index/poslugi/vidacha-posvidchennya-vodiya/obmin-inozemnogo-posvidchennya-vodiya-na-natsionalne/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-gray-700"
+            >
+              Умови обміну на сайті ГСЦ МВС
+            </a>
+          </p>
+          <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+            Підготуватися до теоретичного іспиту (категорія B) допоможе наш
+            безкоштовний тренажер без реєстрації: усі 1762 офіційні питання
+            ГСЦ МВС, режим іспиту (20 питань, 20 хвилин, до 2 помилок),
+            146 білетів, 43 теми та робота над помилками.
+          </p>
+          <a
+            href="https://pdr.hhharm.org/"
+            target="_blank"
+            rel="noopener"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium px-3 py-2.5 rounded-lg border border-gray-200 bg-white text-[#0057B7] hover:bg-gray-50 transition-all duration-200"
+          >
+            ПДР Тренажер — підготовка до іспиту на права
+            <IconExternalLink size={16} className="shrink-0" />
+          </a>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
 export default function QuizHome({ onStart, stats }: Props) {
   return (
     <div className="flex flex-col min-h-screen">
@@ -178,6 +227,8 @@ export default function QuizHome({ onStart, stats }: Props) {
             onStart={(mode) => onStart("constitution", mode)}
           />
         </div>
+
+        <DrivingLicenceInfo />
 
         <Link
           href="/history"
